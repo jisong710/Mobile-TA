@@ -14,7 +14,18 @@ export default function History() {
           ['a', 'b', 'c', 'd'],
         ]
       }
-  )
+  );
+  const hist = async () => {
+    try {
+      const response = await fetch(
+        'link buat history nya'
+      );
+      const json = await response.json();
+      return json;
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <View style={styles.container}>
         <Table borderStyle={{borderWidth: 2, borderColor: '#c8e1ff'}}>

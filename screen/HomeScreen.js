@@ -7,11 +7,11 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
+import {
+  LineChart
+} from "react-native-chart-kit";
 import IconProfil from '../assets/profile.svg';
-import Antisipasi1 from '../assets/RFA2.svg';
-import Antisipasi2 from '../assets/NBA.svg';
-import Antisipasi3 from '../assets/SVM.svg';
-import Awan from '../assets/awan.svg';
+
 import { getData } from '../utils';
 import moment from 'moment';
 
@@ -37,6 +37,62 @@ const HomeScreen = ({ navigation }) => {
 
     });
   }, []);
+  const kejadian = async () => {
+    try {
+      const response = await fetch('yang penting link buat kejadian nya', {
+        method: 'get',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      const json = await response.json();
+      return json.teks;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const antisipasi1 = async () => {
+    try {
+      const response = await fetch('yang penting link buat kejadian nya', {
+        method: 'get',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      const json = await response.json();
+      return json.teks;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const antisipasi2 = async () => {
+    try {
+      const response = await fetch('yang penting link buat kejadian nya', {
+        method: 'get',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      const json = await response.json();
+      return json.teks;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const antisipasi3 = async () => {
+    try {
+      const response = await fetch('yang penting link buat kejadian nya', {
+        method: 'get',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      const json = await response.json();
+      return json.teks;
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <View style={styles.backgroud}>
       <View style={{ flexDirection: 'row', marginTop: 20 }} >
@@ -49,19 +105,25 @@ const HomeScreen = ({ navigation }) => {
       </View>
       <ScrollView horizontal={true} decelerationRate={0} bounces={true} style={{ padding: 10, }}>
         <View style={styles.card}>
-          <Antisipasi1 style={styles.card.picture} />
+          <LineChart 
+          data ={antisipasi1}
+          style={styles.card.picture}/>
           <Text style={styles.card.text}>
             Random Forest Algorithm
           </Text>
         </View>
         <View style={styles.card}>
-          <Antisipasi2 style={styles.card.picture} />
+        <LineChart
+        data ={antisipasi2}
+        style={styles.card.picture}/>
           <Text style={styles.card.text}>
             Naive Bayes Algorithm
           </Text>
         </View>
         <View style={styles.card}>
-          <Antisipasi3 style={styles.card.picture} />
+        <LineChart
+        data ={antisipasi3}
+        style={styles.card.picture}/>
           <Text style={styles.card.text}>
             Super Vector Machine Algorithm
           </Text>
@@ -70,13 +132,9 @@ const HomeScreen = ({ navigation }) => {
       <View style={styles.card2}>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginRight: 20, }}>
           <View style={{ flexDirection: 'column' }}>
-            <Text style={styles.card2.text}>25 °C</Text>
-            <Text style={styles.card2.text2}>Berkabut</Text>
+            <Text style={styles.card2.text}>{kejadian.toString}</Text>
             <Text style={styles.card2.text2}>{currentDate}</Text>
           </View>
-          <Image
-            source={require('../assets/Awann.png')}
-          />
         </View>
         <TouchableOpacity
           style={styles.Button.ButtonStyle}
